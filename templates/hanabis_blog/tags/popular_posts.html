@@ -1,0 +1,46 @@
+{% load post_tags %}
+       <section class="s-extra">
+
+        <div class="row top">
+
+            <div class="col-eight md-six tab-full popular">
+                <h3>Popular Posts</h3>
+
+                <div class="block-1-2 block-m-full popular__posts">
+                    {% for post in last_posts %}
+                    <article class="col-block popular__post">
+                        <a href="{{ post.get_absolute_url }}" class="popular__thumb">
+                            <img src="{{post.image.url}}" alt="">
+                        </a>
+                        <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+                        <section class="popular__meta">
+                                <span class="popular__author"><span>By</span> <a href="#0">{{post.auth.name}}</a></span>
+                            <span class="popular__date"><span>on</span> <time datetime="2017-12-19">{{ post.date_pub }}</time></span>
+                        </section>
+                    </article>
+                    {% endfor %}
+
+                </div> <!-- end popular_posts -->
+            </div> <!-- end popular -->
+
+            {% include 'include/about.html' %}
+
+        </div> <!-- end row -->
+
+        <div class="row bottom tags-wrap">
+            <div class="col-full tags">
+                <h3>Tags</h3>
+
+                <div class="tagcloud">
+                    {% get_tags as tags %}
+                    {% for tag in tags %}
+
+                        <a href="{{ tag.slug }}">
+                          {{ tag.title }}
+                       </a>
+                    {% endfor %}
+                </div> <!-- end tagcloud -->
+            </div> <!-- end tags -->
+        </div> <!-- end tags-wrap -->
+
+    </section> <!-- end s-extra -->

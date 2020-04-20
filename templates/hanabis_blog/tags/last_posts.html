@@ -1,0 +1,92 @@
+<div class="featured">
+
+    <div class="featured__column featured__column--big">
+        <div class="entry" style="background-image:url('{{ last_posts.0.image.url }}');">
+
+            <div class="entry__content">
+                <span class="entry__category">
+                    <a href="{{ last_posts.all.0.get_absolute_url }}">
+                       {% for tag in last_posts.0.tags.all %}
+                             {{ tag }}
+                             {% endfor %}
+                    </a>
+                </span>
+
+                <h1><a href="{{ last_posts.all.0.get_absolute_url }}" title="">{{ last_posts.0.title }}</a></h1>
+
+                <div class="entry__info">
+                    <a href="#0" class="entry__profile-pic">
+                        <img class="avatar" src="{{ last_posts.0.auth.all.0.image.url }}" alt="">
+                    </a>
+
+                    <ul class="entry__meta">
+                        <li><a href="#0">{{ last_posts.0.auth.all.0}}</a></li>
+                        <li>{{ last_posts.0.date_pub }}</li>
+                    </ul>
+                </div>
+            </div> <!-- end entry__content -->
+
+        </div> <!-- end entry -->
+    </div> <!-- end featured__big -->
+
+    <div class="featured__column featured__column--small">
+
+       <div class="entry" style="background-image:url('{{ last_posts.1.image.url }}');">
+
+            <div class="entry__content">
+
+                <span class="entry__category"><a href="{{ last_posts.all.1.get_absolute_url }}">
+                    {% for tag in last_posts.1.tags.all %}
+                    {{ tag }}
+                    {% endfor %}
+                </a></span>
+
+                <h1><a href="{{ last_posts.1.get_absolute_url }}" title="">
+                    {{ last_posts.1.title }}
+                </a></h1>
+
+                <div class="entry__info">
+                    <a href="" class="entry__profile-pic">
+                        <img class="avatar" src={{ last_posts.1.auth.all.0.image.url }} alt="">
+                    </a>
+
+                    <ul class="entry__meta">
+                        <li><a href="#0">
+                            {{ last_posts.1.auth.all.0}}
+                        </a></li>
+                        <li>{{ last_posts.1.date_pub }}</li>
+                    </ul>
+                </div>
+
+            </div> <!-- end entry__content -->
+
+        </div> <!-- end entry -->
+           <div class="entry" style="background-image:url('{{ last_posts.2.image.url }}');">
+
+                <div class="entry__content">
+                    <span class="entry__category"><a href="{{ last_posts.all.2.get_absolute_url }}">
+                         {% for tag in last_posts.2.tags.all %}
+                            {{ tag }}
+                         {% endfor %}
+
+                    </a></span>
+
+                    <h1><a href="{{ last_posts.all.2.get_absolute_url }}" title="">{{ last_posts.2.title }}</a></h1>
+
+                    <div class="entry__info">
+                        <a href="{{ last_posts.all.1.get_absolute_url }}" class="entry__profile-pic">
+                            <img class="avatar" src={{ last_posts.2.auth.all.0.image }} alt="">
+                        </a>
+
+                        <ul class="entry__meta">
+                            <li><a href="#0">{{ last_posts.2.auth.all.0}}</a></li>
+                            <li>{{ last_posts.2.date_pub }}</li>
+                        </ul>
+                    </div>
+                </div> <!-- end entry__content -->
+
+            </div> <!-- end entry -->
+
+        </div> <!-- end featured__small -->
+    </div> <!-- end featured -->
+

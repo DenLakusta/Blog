@@ -1,0 +1,94 @@
+<div class="featured__column featured__column--big">
+
+                    <div class="entry" style="background-image:url('{{ post_list.0.image.url }}');">
+
+                        <div class="entry__content">
+                            <span class="entry__category"><a href="{{ post_list.all.0.get_absolute_url }}">
+                                 {% for tag in post_list.0.tags.all %}
+                                     {{ tag }} <br />
+                                 {% endfor %}
+
+                            </a></span>
+
+                            <h1><a href="{{ post_list.all.0.get_absolute_url }}" title="">
+                                {{ post_list.0.title }}
+
+                            </a></h1>
+
+                            <div class="entry__info">
+                                <a href="{{ post_list.all.0.get_absolute_url }}" class="entry__profile-pic">
+                                    <img class="avatar" src="{{ post_list.0.auth.all.0.image.url }}" alt="">
+                                </a>
+
+                                <ul class="entry__meta">
+                                    <li><a href="#0">
+                                        {{ post_list.0.auth.all.0}}
+                                    </a></li>
+                                    <li>{{ post_list.0.date_pub }}</li>
+                                </ul>
+                            </div>
+                        </div> <!-- end entry__content -->
+
+                    </div> <!-- end entry -->
+                </div> <!-- end featured__big -->
+
+                <div class="featured__column featured__column--small">
+
+                    <div class="entry" style="background-image:url('{{ post_list.1.image.url }}');">
+
+                        <div class="entry__content">
+
+                            <span class="entry__category"><a href="{{ post_list.all.1.get_absolute_url }}">
+                                {% for tag in post_list.1.tags.all %}
+                                {{ tag }}
+                                {% endfor %}
+                            </a></span>
+
+                            <h1><a href="{{ post_list.all.1.get_absolute_url }}" title="">
+                                {{ post_list.1.title }}
+                            </a></h1>
+
+                            <div class="entry__info">
+                                <a href="{{ post_list.all.1.get_absolute_url }}" class="entry__profile-pic">
+                                    <img class="avatar" src={{ post_list.1.auth.all.0.image.url }} alt="">
+                                </a>
+
+                                <ul class="entry__meta">
+                                    <li><a href="#0">
+                                        {{ post_list.1.auth.all.0}}
+                                    </a></li>
+                                    <li>{{ post_list.1.date_pub }}</li>
+                                </ul>
+                            </div>
+
+                        </div> <!-- end entry__content -->
+
+                    </div> <!-- end entry -->
+
+                    <div class="entry" style="background-image:url('{{ post_list.2.image.url }}');">
+
+                        <div class="entry__content">
+                            <span class="entry__category"><a href="{{ post_list.all.2.get_absolute_url }}">
+                                 {% for tag in post_list.2.tags.all %}
+                                    {{ tag }}
+                                 {% endfor %}
+
+                            </a></span>
+
+                            <h1><a href="{{ post_list.all.2.get_absolute_url }}" title="">{{ post_list.2.title }}</a></h1>
+
+                            <div class="entry__info">
+                                <a href="{{ post_list.all.1.get_absolute_url }}" class="entry__profile-pic">
+                                    <img class="avatar" src={{ post_list.2.auth.all.0.image }} alt="">
+                                </a>
+
+                                <ul class="entry__meta">
+                                    <li><a href="#0">{{ post_list.2.auth.all.0}}</a></li>
+                                    <li>{{ post_list.2.date_pub }}</li>
+                                </ul>
+                            </div>
+                        </div> <!-- end entry__content -->
+
+                    </div> <!-- end entry -->
+
+                </div> <!-- end featured__small -->

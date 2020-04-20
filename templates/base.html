@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title> {% block post_title %}{% endblock post_title %}</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src="{% static 'js/pace.min.js' %}"></script>
+
+    <link rel="shortcut icon" href="../philosophy-colorlib/philosophy-colorlib/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../philosophy-colorlib/philosophy-colorlib/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+         {% block content %}
+
+        {% endblock content %}
+         {% block popular %}
+         {% endblock popular %}
+  {% include 'include/footer.html' %}
+</body>
+</html>
