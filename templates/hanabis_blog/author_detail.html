@@ -23,14 +23,15 @@
             <div class="col-full s-content__main">
 
                 <p class="lead">{{ author.about|safe }}</p>
+                <p> Date of birth: {{ author.date_birth }}</p>
 
-                <P>{{ author.date_birth }}</P>
 
                 <p class="s-content__tags">
                     <span>Author Posts</span>
 
                     <span class="s-content__tag-list">
-                       {% for post in author.post.all %}
+
+                       {% for post in author.posts.all %}
                         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                         {% endfor %}
                     </span>

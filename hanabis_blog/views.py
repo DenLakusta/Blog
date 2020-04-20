@@ -17,12 +17,22 @@ class PostsView(ListView):
     queryset = Post.objects.filter(draft=False)
 
 
+class TagYear:
 
-class TagView(View):
+    def get_tags(self):
+        return  Tag.objects.all()
 
-    def get(self, requests):
-        tags = Tag.objects.all()
-        return render(requests, 'tags/tags_list.html', {'tags_list':tags})
+    def get_year(self):
+        Post.objects.filter(draft=True)
+
+
+class TagView(ListView):
+    tag_list = Tag
+    queryset = Tag.objects.all()
+
+    # def get(self, requests):
+    #     tags = Tag.objects.all()
+    #     return render(requests, 'tags/tags_list.html', {'tags_list':tags})
 #
 
 class PostDetailView(DetailView):

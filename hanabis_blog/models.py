@@ -45,7 +45,7 @@ class Post(models.Model):
     body = models.TextField("Body", db_index=True)
     tags = models.ManyToManyField(Tag, verbose_name="tags", related_name="hanabis_blog", blank=True)
     date_pub = models.DateTimeField("Date", default="")
-    auth = models.ManyToManyField(Author, verbose_name="Authors", related_name='hanabis_blog', blank=True)
+    auth = models.ManyToManyField(Author, verbose_name="Authors", related_name='posts', blank=True)
     image = models.ImageField("Post image", upload_to="post_image/")
     draft = models.BooleanField("Draft", default=False)
 

@@ -21,9 +21,11 @@
                                 </a>
 
                                 <ul class="entry__meta">
-                                    <li><a href="#0">
-                                        {{ post_list.0.auth.all.0}}
+                                    {% for auth in  post_list.0.auth.all %}
+                                    <li><a href="{{ auth.get_absolute_url }}">
+{#                                        {{ }}#}
                                     </a></li>
+                                    {% endfor %}
                                     <li>{{ post_list.0.date_pub }}</li>
                                 </ul>
                             </div>

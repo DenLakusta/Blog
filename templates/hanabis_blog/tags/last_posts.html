@@ -20,7 +20,11 @@
                     </a>
 
                     <ul class="entry__meta">
-                        <li><a href="#0">{{ last_posts.0.auth.all.0}}</a></li>
+                          {% for auth in  last_posts.0.auth.all %}
+                            <li><a href="{{ auth.get_absolute_url }}">
+                                            {{ auth }}
+                            </a></li>
+                        {% endfor %}
                         <li>{{ last_posts.0.date_pub }}</li>
                     </ul>
                 </div>
@@ -51,9 +55,11 @@
                     </a>
 
                     <ul class="entry__meta">
-                        <li><a href="#0">
-                            {{ last_posts.1.auth.all.0}}
-                        </a></li>
+                         {% for auth in  last_posts.1.auth.all %}
+                            <li><a href="{{ auth.get_absolute_url }}">
+                                            {{ auth }}
+                            </a></li>
+                        {% endfor %}
                         <li>{{ last_posts.1.date_pub }}</li>
                     </ul>
                 </div>
@@ -74,12 +80,17 @@
                     <h1><a href="{{ last_posts.all.2.get_absolute_url }}" title="">{{ last_posts.2.title }}</a></h1>
 
                     <div class="entry__info">
-                        <a href="{{ last_posts.all.1.get_absolute_url }}" class="entry__profile-pic">
+                        <a href="{{ last_posts.all.2.get_absolute_url }}" class="entry__profile-pic">
                             <img class="avatar" src={{ last_posts.2.auth.all.0.image }} alt="">
                         </a>
 
                         <ul class="entry__meta">
-                            <li><a href="#0">{{ last_posts.2.auth.all.0}}</a></li>
+                          {% for auth in  last_posts.2.auth.all %}
+                            <li><a href="{{ auth.get_absolute_url }}">
+                                            {{ auth }}
+                            </a></li>
+                          {% endfor %}
+
                             <li>{{ last_posts.2.date_pub }}</li>
                         </ul>
                     </div>
