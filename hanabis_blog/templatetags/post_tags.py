@@ -11,14 +11,14 @@ def get_tags():
 @register.inclusion_tag('hanabis_blog/tags/last_posts.html')
 def get_last_posts(count=3):
     posts = Post.objects.order_by('id')[:count]
-    print(posts)
+    # print(posts)
     return {"last_posts":posts}
 
 
 @register.inclusion_tag('hanabis_blog/tags/popular_posts.html')
 def get_popular_posts():
     posts = Post.objects.order_by('id')[:6]
-    print(posts)
+    # print(posts)
     return {"last_posts":posts}
 
 

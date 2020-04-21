@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 from django import forms
-from .models import Tag, Post, Author, Reviews
+from .models import Tag, Post, Author, Reviews, Category
 
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from hanabis_blog.models import Post
@@ -19,12 +19,16 @@ class PostAdminForm(forms.ModelForm):
         fields = '__all__'
 
 
-
-
 class ReviewInline(admin.TabularInline):
     model = Reviews
     extra = 1
     readonly_fields = ('name', 'email')
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'slug')
+    list_display_links = ["title"]
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):

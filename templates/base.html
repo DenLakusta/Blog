@@ -19,11 +19,13 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
 
     <!-- script
     ================================================== -->
     <script src="{% static 'js/modernizr.js' %}"></script>
     <script src="{% static 'js/pace.min.js' %}"></script>
+
 
     <link rel="shortcut icon" href="../philosophy-colorlib/philosophy-colorlib/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../philosophy-colorlib/philosophy-colorlib/favicon.ico" type="image/x-icon">
@@ -33,10 +35,11 @@
 <body id="top">
 
          {% block content %}
+         {% endblock content %}
 
-        {% endblock content %}
          {% block popular %}
          {% endblock popular %}
+
   {% include 'include/footer.html' %}
 </body>
 </html>

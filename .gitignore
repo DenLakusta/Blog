@@ -1,6 +1,6 @@
 /db.sqlite3
 media/
-/Blog/settings.py
+#/Blog/settings.py
 venv/
 .idea/**/workspace.xml
 .idea/**/tasks.xml

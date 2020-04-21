@@ -1,0 +1,47 @@
+  <div class="row">
+        <div class="col-full">
+            <nav class="pgn">
+                <ul>
+
+                    {% if page_obj.has_previous %}
+                        {% if page_obj.number|add:-3 > 1 %}
+                            <li><a class="pgn__num" href="?page=1">1</a></li>
+                        {% endif %}
+                        {% if page_obj.number|add:-3 > 3 %}
+                            <li><a class="pgn__num" href="?page={{ page_obj.previous_page_number|add:-3 }}">
+                                <span class="pgn__num dots">...</span>
+                            </a></li>
+                        {% endif %}
+                            <li><a class="pgn__prev" href="?page={{ page_obj.previous_page_number }}">Prev</a></li>
+                         {% endif %}
+
+                    {%  if paginator.page_range|length > 1 %}
+                        {% for page_num in paginator.page_range %}
+                             {% if page_obj.number == page_num %}
+                                <li><a class="pgn__num current" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                            {% elif page_num > page_obj.number|add:-4  and page_num < page_obj.number|add:4 %}
+                                  <li><a class="pgn__num" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+{#                            <li><span class="pgn__num current">#}
+{#                                 Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
+{#                           </span></li>#}
+
+{#                    <li><a class="pgn__num" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>#}
+                    {% if page_obj.has_next %}
+                        {% if page_obj.number|add:4 < page_obj.paginator.num_pages %}
+                            <li><a class="pgn__num" href="?page={{ page_obj.next_page_number|add:3 }}">
+                                <span class="dots">...</span>
+                            </a></li>
+                        {% endif %}
+                        {% if page_obj.number|add:3 < page_obj.paginator.num_pages %}
+                            <li><a class="pgn__num" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+
+                        {% endif %}
+                        <li><a class="pgn__next" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>

@@ -4,6 +4,28 @@ from datetime import datetime
 from django.urls import reverse
 
 
+
+
+
+
+
+class Category(models.Model):
+    title = models.CharField("Category", max_length=150)
+    slug = models.SlugField("Slug", max_length=50, unique=True)
+    description = models.TextField('Description', max_length=2000, default='')
+
+
+    def get_absolute_url(self):
+        return reverse("category_detail", kwargs={"slug": self.slug})
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
+
 class Tag(models.Model):
     title = models.CharField("Tag", max_length=150)
     slug = models.SlugField("Slug", max_length=50, unique=True)
@@ -15,6 +37,7 @@ class Tag(models.Model):
         return self.title
 
     class Meta:
+        ordering = ['title']
         verbose_name = "Tag"
         verbose_name_plural = "Tags"
 
@@ -35,6 +58,7 @@ class Author(models.Model):
         return self.name
 
     class Meta:
+
         verbose_name = "Author"
         verbose_name_plural = "Authors"
 
@@ -43,12 +67,12 @@ class Post(models.Model):
     title = models.CharField("Title", max_length=150, db_index=True)
     slug = models.SlugField("Slug", max_length=150, unique=True)
     body = models.TextField("Body", db_index=True)
-    tags = models.ManyToManyField(Tag, verbose_name="tags", related_name="hanabis_blog", blank=True)
+    tags = models.ManyToManyField(Tag, verbose_name="tags", related_name="posts", blank=True)
     date_pub = models.DateTimeField("Date", default="")
     auth = models.ManyToManyField(Author, verbose_name="Authors", related_name='posts', blank=True)
     image = models.ImageField("Post image", upload_to="post_image/")
     draft = models.BooleanField("Draft", default=False)
-
+    categories = models.ManyToManyField(Category, verbose_name="categories", related_name="posts", blank=True)
 
     def get_absolute_url(self):
         return reverse("post_detail", kwargs={"slug":self.slug})
@@ -60,6 +84,7 @@ class Post(models.Model):
         return self.reviews_set.filter(parent__isnull=True)
 
     class Meta:
+        ordering = ['-date_pub']
         verbose_name = "Post"
         verbose_name_plural = "Posts"
 
