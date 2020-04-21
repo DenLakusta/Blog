@@ -3,16 +3,17 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 # Create your views here.
+from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.base import View
 
 from .forms import ReviewForm
 from .models import Post, Tag, Author
 from django.core.paginator import Paginator
-# class PostsView(ListView):
-#     model = Post
-#     queryset = Post.objects.filter(draft=False)
-# #
+
+
+# reverse('django.contrib.flatpages.views.flatpage', kwargs={'url': '/about/'})
+
 
 class TagYear:
 
@@ -25,7 +26,7 @@ class TagYear:
 
 
 class PostsView(TagYear, ListView):
-    paginate_by = 3
+    paginate_by = 4
     post_list = Post
     queryset = Post.objects.filter(draft=False)
 
@@ -81,7 +82,7 @@ class TagDetailView(ListView):
 
 class Search(ListView):
 
-    paginate_by = 2
+    paginate_by = 4
 
     def get_queryset(self):
         return Post.objects.filter(title__icontains=self.request.GET.get('s'))
