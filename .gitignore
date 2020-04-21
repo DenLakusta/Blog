@@ -16,3 +16,4 @@ venv/
 .idea/**/libraries
 *.iws /out/
 test.py
+client_id.json

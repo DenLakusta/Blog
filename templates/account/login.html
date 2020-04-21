@@ -1,0 +1,63 @@
+{% extends "account/base.html" %}
+
+
+{% load i18n %}
+{% load account socialaccount %}
+{#ocialaccount %}#}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block auth %}
+    <section class="s-content s-content--narrow s-content--no-padding-bottom">
+         <article class="row format-standard">
+
+
+            <div id="comments" class="row">
+                <div class="col-full">
+
+                <h2 class="s-content__header col-full">{% trans "Sign In" %}</h2>
+
+                {% get_providers as socialaccount_providers %}
+
+                {% if socialaccount_providers %}
+                <p class="col-full s-content__header">{% blocktrans with site.name as site_name %}Please sign in with one
+                of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+                for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+                <div class="s-content__header">
+
+                  <ul class="col-full s-content__header">
+                      <p class="col-full s-content__header">Login using </p>
+                    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                  </ul>
+
+
+
+                </div>
+                    <p class="col-full s-content__header">Or use authorization form</p>
+                {% include "socialaccount/snippets/login_extra.html" %}
+
+                {% else %}
+                    <p class="col-full s-content__header">{% blocktrans %}If you have not created an account yet, then please
+                    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+                {% endif %}
+                <div class="respond">
+                    <form class="contactForm" id="formReview" method="POST" action="{% url 'account_login' %}">
+                      {% csrf_token %}
+                     <div  id="cName" class="full-width">
+                        {{ form.as_p }}
+                     </div>
+                      {% if redirect_field_value %}
+                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                      {% endif %}
+                      <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                      <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+
+        </article>
+
+    </section> <!-- s-content -->
+{% endblock %}

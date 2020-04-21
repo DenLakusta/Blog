@@ -2,6 +2,8 @@ from django.contrib.flatpages.views import flatpage
 from django.urls import path
 from django.contrib.flatpages import views
 from . import views
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     path('', views.PostsView.as_view(), name='home'),
@@ -14,4 +16,5 @@ urlpatterns = [
     path('json_filter/', views.JsonFilterPostsView.as_view(), name='json_filter'),
     path('about/', flatpage, name='about'),
     path('contact/', flatpage, name='contact'),
+    path('accounts/logout/', TemplateView.as_view(template_name='account/logout.html'))
 ]
