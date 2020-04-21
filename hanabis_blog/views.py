@@ -43,14 +43,23 @@ class TagView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
+    queryset = Post.objects.filter(draft=False)
     slug_field = "slug"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = ReviewForm()
+        return context
+
 
 class AddReview(View):
 
     def post(self, request, pk):
         form = ReviewForm(request.POST)
         post = Post.objects.get(id=pk)
+        print(form.is_valid())
         if form.is_valid():
+            print(form.errors)
             form = form.save(commit=False)
             if request.POST.get("parent", None):
                 form.parent_id = int(request.POST.get('parent'))

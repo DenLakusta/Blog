@@ -93,10 +93,10 @@ class Post(models.Model):
 class Reviews(models.Model):
 
     name = models.CharField('Name', max_length=100)
-    email = models.EmailField()
+    email = models.EmailField("Email", max_length=150, null=True)
     text = models.TextField('Message', max_length=5000)
     parent = models.ForeignKey('self', verbose_name='Parent', on_delete=models.SET_NULL, blank=True, null=True)
-    date_pub = models.CharField("Date",null=True, blank=True, default=datetime.now().strftime('%Y-%m-%d'), max_length=50)
+    date_pub = models.CharField("Date",null=True, blank=True, auto_created=True, default=datetime.now().strftime('%Y-%m-%d'), max_length=50)
     post = models.ForeignKey(Post, verbose_name='post', on_delete=models.CASCADE)
 
     def __str__(self):

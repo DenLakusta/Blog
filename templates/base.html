@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
+{% load static recaptcha3 %}
 <html class="no-js" lang="en">
 <head>
 
@@ -29,7 +29,8 @@
 
     <link rel="shortcut icon" href="../philosophy-colorlib/philosophy-colorlib/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../philosophy-colorlib/philosophy-colorlib/favicon.ico" type="image/x-icon">
-
+    {% recaptcha_init %}
+    {% recaptcha_ready action_name='homepage' %}
 </head>
 
 <body id="top">

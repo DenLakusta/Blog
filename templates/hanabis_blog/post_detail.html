@@ -117,7 +117,14 @@
                                 <div class="comment__meta">
                                     <time class="comment__time">{{ review.date_pub }}</time>
                                     <a class="reply" href="#formReview" onclick="addReview('{{ review.name }}','{{ review.id }}')">Reply</a>
+                                     <script>
+                                         function addReview(name, id) {
+                                             console.log(id,name)
+                                             document.getElementById("contactparent").value = id;
+                                             document.getElementById("contactparent").innerText = `${name}, `
 
+                                         }
+                                      </script>
                                 </div>
                                 </div>
 
@@ -200,18 +207,20 @@
                             <fieldset>
 
                                 <div class="form-field">
-                                        <input name="name" type="text" id="cName" class="full-width" placeholder="Your Name" value="">
+{#                                       <input name="name" type="text" id="cName" class="full-width" placeholder="Your Name" value="">#}
+                                        {{ form.name }}
                                 </div>
 
                                 <div class="form-field">
-                                        <input name="email" type="text" id="cEmail" class="full-width" placeholder="Your Email" value="">
+{#                                        <input name="email" type="text" id="cEmail" class="full-width" placeholder="Your Email" value="">#}
+                                        {{ form.email }}
                                 </div>
 
                                 <div class="message form-field">
-
-                                    <textarea name="text" id="cMessage" class="full-width" placeholder="Your Message"></textarea>
+                                        {{ form.text }}
+{#                                    <textarea name="text" id="cMessage" class="full-width" placeholder="Your Message"></textarea>#}
                                 </div>
-
+                                {{ form.recaptcha }}
                                 <button type="submit" class="submit btn--primary btn--large full-width">Submit</button>
 
                             </fieldset>
@@ -220,19 +229,12 @@
                     </div> <!-- end respond -->
 
                 </div> <!-- end col-full -->
-
+{##}
             </div> <!-- end row comments -->
         </div> <!-- end comments-wrap -->
 
     </section> <!-- s-content -->
-  <script>
-     function addReview(name, id) {
-         console.log(id,name)
-         document.getElementById("contactparent").value = id;
-         document.getElementById("contactparent").innerText = `${name}, `
 
-     }
-  </script>
 
 {% endblock detail %}
 

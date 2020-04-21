@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'hanabis_blog',
     'ckeditor',
     'ckeditor_uploader',
+    'snowpenguin.django.recaptcha3',
 
 
 ]
@@ -203,7 +204,13 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath',
             'youtube',
-            'codesnippet'
+            'codesnippet',
+
         ]),
     }
 }
+
+RECAPTCHA_PUBLIC_KEY = "6Lf5N-wUAAAAAJNgtfPtSiwaxbNqXgeIMyZ4Ka2p"
+RECAPTCHA_PRIVATE_KEY = "6Lf5N-wUAAAAAB8NZh-qPegYffZpCHr86JDfgG--"
+RECAPTCHA_DEFAULT_ACTIOND = "generic"
+RECAPTCHA_SCORE_THRESHOLD = 0.5
