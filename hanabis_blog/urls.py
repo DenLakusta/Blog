@@ -15,6 +15,6 @@ urlpatterns = [
     path('filter/', views.FilterPostsView.as_view(), name='filter'),
     path('json_filter/', views.JsonFilterPostsView.as_view(), name='json_filter'),
     path('about/', flatpage, name='about'),
-    path('contact/', flatpage, name='contact'),
+    path('contact_us/', flatpage, name='contact_us'),
     path('accounts/logout/', TemplateView.as_view(template_name='account/logout.html'))
 ]

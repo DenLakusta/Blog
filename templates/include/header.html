@@ -71,7 +71,7 @@
                         </ul>
                     </li>
                     <li><a href="{% url 'about' %} " title="">About</a></li>
-                    <li><a href="{% url 'contact' %}" title="">Contact</a></li>
+                    <li><a href="{% url 'contact_us' %}" title="">Contact</a></li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'account_logout' %}" title="">Log out&nbsp;&nbsp;</a></li>
                             <span>{{ user.username }}</span>
