@@ -1,4 +1,5 @@
 {% load post_tags %}
+
        <section class="s-extra">
 
         <div class="row top">
@@ -26,9 +27,23 @@
             {% include 'include/about.html' %}
 
         </div> <!-- end row -->
+        <div class="col-six tags-wrap">
+            <div class="tags">
+                <h3>Categories</h3>
 
+                <div class="tagcloud">
+                    {% get_tags as tags %}
+                    {% for tag in tags %}
+
+                        <a href="{{ tag.slug }}">
+                          {{ tag.title }}
+                       </a>
+                    {% endfor %}
+                </div> <!-- end tagcloud -->
+            </div> <!-- end tags -->
+        </div> <!-- end tags-wrap -->
         <div class="row bottom tags-wrap">
-            <div class="col-full tags">
+            <div class="col-8 tags">
                 <h3>Tags</h3>
 
                 <div class="tagcloud">
