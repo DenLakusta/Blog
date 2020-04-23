@@ -1,0 +1,8 @@
+     <div class="pt-5">
+                 {% for tag in post.tags.all %}
+                     <li class="cg eh iq my">
+                       <a href="" class="nc my">{{ tag }}</a>
+                     </li>
+                   <button type="button" class="follow">{{ tag }}</button>
+                  {% endfor %}
+            </div>

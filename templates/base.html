@@ -1,46 +1,72 @@
 <!DOCTYPE html>
 {% load static recaptcha3 %}
-<html class="no-js" lang="en">
+<html lang="en">
 <head>
-
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title> {% block post_title %}{% endblock post_title %}</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
-
-    <!-- script
-    ================================================== -->
-    <script src="{% static 'js/modernizr.js' %}"></script>
-    <script src="{% static 'js/pace.min.js' %}"></script>
+  <title>Hanabis &mdash; Cloud and Security Engineers community</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <link rel="shortcut icon" href="../philosophy-colorlib/philosophy-colorlib/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../philosophy-colorlib/philosophy-colorlib/favicon.ico" type="image/x-icon">
-    {% recaptcha_init %}
-    {% recaptcha_ready action_name='homepage' %}
+  <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css'%}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css'%}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
+
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css'%}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css'%}">
+
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css'%}">
+
+  <link rel="stylesheet" href="{% static 'css/aos.css'%}">
+  <link href="{% static 'css/jquery.mb.YTPlayer.min.css'%}" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
 </head>
 
-<body id="top">
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <div class="site-wrap">
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+              <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
 
-         {% block content %}
-         {% endblock content %}
+      <div class="site-mobile-menu-body"></div>
+    </div>
 
-         {% block popular %}
-         {% endblock popular %}
+      {% include 'include/header.html' %}
 
-  {% include 'include/footer.html' %}
+      {% block content %}
+      {% endblock content %}
+
+    {% include 'include/footer.html' %}
+  </div>
+
+  <script src="{% static 'js/jquery-3.3.1.min.js'%}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
+  <script src="{% static 'js/jquery-ui.js'%}"></script>
+  <script src="{% static 'js/popper.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js'%}"></script>
+  <script src="{% static 'js/jquery.countdown.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.min.js'%}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
+  <script src="{% static 'js/aos.js'%}"></script>
+  <script src="{% static 'js/jquery.fancybox.min.js'%}"></script>
+  <script src="{% static 'js/jquery.sticky.js'%}"></script>
+  <script src="{% static 'js/jquery.mb.YTPlayer.min.js'%}"></script>
+
+
+
+
+  <script src="{% static 'js/main.js'%}"></script>
 </body>
 </html>

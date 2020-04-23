@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-
-    <div class="s-pageheader">
-
-        {% include 'include/header.html' %}
-    </div> <!-- end s-pageheader -->
-    {% block detail %}
-    {% endblock detail %}
+  <div class="container">
+    <div class="row">
+      {% block firs_posts %}
+      {% endblock firs_posts %}
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      {% block posts %}
+      {% endblock posts %}
+    </div>
+  </div>
 {% endblock content %}
-

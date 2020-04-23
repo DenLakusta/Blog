@@ -1,61 +1,30 @@
 {% load post_tags %}
 
-       <section class="s-extra">
+    <div class="section-title">
+      <h2>Popular Posts</h2>
+    </div>
+      {% for post in popular_posts %}
+        <div class="trend-entry d-flex">
+          <div class="number align-self-start">01</div>
+          <div class="trend-contents">
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+            <div class="post-meta">
+                <span class="d-block">
+                      {% for auth in  post.auth.all %}
+                        <a href="{{ auth.get_absolute_url }}">{{ auth }}</a> in
+                      {% endfor %}
+                      {% for tag in post.tags.all %}
+                        <a href="{{ tag.get_absolute_url }}"> {{ tag }}</a>
+                      {% endfor %}
+                </span>
+                <span class="date-read">{{ post.date_pub }}<span class="mx-1">&bullet
+                </span> 3 min read <span class="icon-star2"></span></span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
 
-        <div class="row top">
 
-            <div class="col-eight md-six tab-full popular">
-                <h3>Popular Posts</h3>
-
-                <div class="block-1-2 block-m-full popular__posts">
-                    {% for post in last_posts %}
-                    <article class="col-block popular__post">
-                        <a href="{{ post.get_absolute_url }}" class="popular__thumb">
-                            <img src="{{post.image.url}}" alt="">
-                        </a>
-                        <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
-                        <section class="popular__meta">
-                                <span class="popular__author"><span>By</span> <a href="#0">{{post.auth.name}}</a></span>
-                            <span class="popular__date"><span>on</span> <time datetime="2017-12-19">{{ post.date_pub }}</time></span>
-                        </section>
-                    </article>
-                    {% endfor %}
-
-                </div> <!-- end popular_posts -->
-            </div> <!-- end popular -->
-
-            {% include 'include/about.html' %}
-
-        </div> <!-- end row -->
-        <div class="col-six tags-wrap">
-            <div class="tags">
-                <h3>Categories</h3>
-
-                <div class="tagcloud">
-                    {% get_tags as tags %}
-                    {% for tag in tags %}
-
-                        <a href="{{ tag.slug }}">
-                          {{ tag.title }}
-                       </a>
-                    {% endfor %}
-                </div> <!-- end tagcloud -->
-            </div> <!-- end tags -->
-        </div> <!-- end tags-wrap -->
-        <div class="row bottom tags-wrap">
-            <div class="col-8 tags">
-                <h3>Tags</h3>
-
-                <div class="tagcloud">
-                    {% get_tags as tags %}
-                    {% for tag in tags %}
-
-                        <a href="{{ tag.slug }}">
-                          {{ tag.title }}
-                       </a>
-                    {% endfor %}
-                </div> <!-- end tagcloud -->
-            </div> <!-- end tags -->
-        </div> <!-- end tags-wrap -->
-
-    </section> <!-- end s-extra -->
+      <p>
+        <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
+      </p>

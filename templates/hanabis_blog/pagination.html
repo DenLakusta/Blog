@@ -1,26 +1,26 @@
   <div class="row">
-        <div class="col-full">
-            <nav class="pgn">
-                <ul>
+        <div class="col-lg-6">
+
+                <ul class="custom-pagination list-unstyled">
 
                     {% if page_obj.has_previous %}
                         {% if page_obj.number|add:-3 > 1 %}
-                            <li><a class="pgn__num" href="?{{ s }}page=1">1</a></li>
+                            <li><a href="?{{ s }}page=1">1</a></li>
                         {% endif %}
                         {% if page_obj.number|add:-3 > 3 %}
-                            <li><a class="pgn__num" href="?{{ s }}page={{ page_obj.previous_page_number|add:-3 }}">
-                                <span class="pgn__num dots">...</span>
+                            <li><a href="?{{ s }}page={{ page_obj.previous_page_number|add:-3 }}">
+                                <span class="dots">...</span>
                             </a></li>
                         {% endif %}
-                            <li><a class="pgn__prev" href="?{{ s }}page={{ page_obj.previous_page_number }}">Prev</a></li>
+                            <li><a class="pgn__prev"  href="?{{ s }}page={{ page_obj.previous_page_number }}">Prev</a></li>
                          {% endif %}
 
                     {%  if paginator.page_range|length > 1 %}
                         {% for page_num in paginator.page_range %}
                              {% if page_obj.number == page_num %}
-                                <li><a class="pgn__num current" href="?{{ s }}page={{ page_num }}">{{ page_num }}</a></li>
+                                <li><a class="active" href="?{{ s }}page={{ page_num }}">{{ page_num }}</a></li>
                             {% elif page_num > page_obj.number|add:-4  and page_num < page_obj.number|add:4 %}
-                                  <li><a class="pgn__num" href="?{{ s }}page={{ page_num }}">{{ page_num }}</a></li>
+                                  <li><a href="?{{ s }}page={{ page_num }}">{{ page_num }}</a></li>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
@@ -31,17 +31,17 @@
 {#                    <li><a class="pgn__num" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>#}
                     {% if page_obj.has_next %}
                         {% if page_obj.number|add:4 < page_obj.paginator.num_pages %}
-                            <li><a class="pgn__num" href="?{{ s }}page={{ page_obj.next_page_number|add:3 }}">
+                            <li><a href="?{{ s }}page={{ page_obj.next_page_number|add:3 }}">
                                 <span class="dots">...</span>
                             </a></li>
                         {% endif %}
                         {% if page_obj.number|add:3 < page_obj.paginator.num_pages %}
-                            <li><a class="pgn__num" href="?{{ s }}page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+                            <li><a href="?{{ s }}page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
 
                         {% endif %}
                         <li><a class="pgn__next" href="?{{ s }}page={{ page_obj.next_page_number }}">Next</a></li>
                     {% endif %}
                 </ul>
-            </nav>
+
         </div>
     </div>

@@ -1,103 +1,97 @@
-<div class="featured">
 
-    <div class="featured__column featured__column--big">
-        <div class="entry" style="background-image:url('{{ last_posts.0.image.url }}');">
+<div class="col-lg-8">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h2>Last posts</h2>
+        </div>
+      </div>
+    </div>
 
-            <div class="entry__content">
-                <span class="entry__category">
-                    <a href="{{ last_posts.all.0.get_absolute_url }}">
-                       {% for tag in last_posts.0.tags.all %}
-                             {{ tag }}
-                             {% endfor %}
-                    </a>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="post-entry-1">
+          <a href="{{ last_posts.all.0.get_absolute_url }}"><img src="{{ last_posts.0.image.url }}" alt="Image" class="img-fluid"></a>
+          <h2><a href="{{ last_posts.all.0.get_absolute_url }}">{{ last_posts.0.title }}</a></h2>
+          <p>{{ last_posts.all.0.body }}</p>
+          <div class="post-meta">
+            <span class="d-block">
+             {% for auth in  last_posts.0.auth.all %}
+                    <a href="{{ auth.get_absolute_url }}">{{ auth }}</a> in
+              {% endfor %}
+            {% for tag in last_posts.0.tags.all %}
+                <a href="{{ tag.get_absolute_url }}"> {{ tag }}</a>
+            {% endfor %}
+             </span>
+             <span class="date-read">{{ last_posts.0.date_pub }}<span class="mx-1">&bullet;
+             </span> 3 min read <span class="icon-star2"></span></span>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-sm-6">
+        <div class="post-entry-2 d-flex bg-light">
+          <div class="thumbnail" style="background-image: url('{{ last_posts.1.image.url }}')"></div>
+            <div class="contents">
+              <h2><a href="{{ last_posts.all.1.get_absolute_url }}">{{ last_posts.1.title }}</a></h2>
+              <div class="post-meta">
+                <span class="d-block">
+                  {% for auth in  last_posts.1.auth.all %}
+                    <a href="{{ auth.get_absolute_url }}">{{ auth }}</a> in
+                  {% endfor %}
+                  {% for tag in last_posts.1.tags.all %}
+                    <a href="{{ tag.get_absolute_url }}"> {{ tag }}</a>
+                  {% endfor %}
                 </span>
+                <span class="date-read">{{ last_posts.1.date_pub }}<span class="mx-1">&bullet
+                </span> 3 min read <span class="icon-star2"></span></span>
+              </div>
+            </div>
+       </div>
 
-                <h1><a href="{{ last_posts.all.0.get_absolute_url }}" title="">{{ last_posts.0.title }}</a></h1>
 
-                <div class="entry__info">
-                    <a href="#0" class="entry__profile-pic">
-                        <img class="avatar" src="{{ last_posts.0.auth.all.0.image.url }}" alt="">
-                    </a>
+        <div class="post-entry-2 d-flex">
+          <div class="thumbnail" style="background-image: url('{{ last_posts.2.image.url }}')"></div>
+            <div class="contents">
+              <h2><a href="{{ last_posts.all.2.get_absolute_url }}">{{ last_posts.2.title }}</a></h2>
+              <div class="post-meta">
+                <span class="d-block">
+                {% for auth in  last_posts.2.auth.all %}
+                  <a href="{{ auth.get_absolute_url }}">{{ auth }}</a> in
+                  {% endfor %}
+                  {% for tag in last_posts.2.tags.all %}
+                    <a href="{{ tag.get_absolute_url }}"> {{ tag }}</a>
+                  {% endfor %}
+                </span>
+                <span class="date-read">{{ last_posts.2.date_pub }}<span class="mx-1">&bullet
+                </span> 3 min read <span class="icon-star2"></span></span>
+              </div>
+            </div>
+        </div>
 
-                    <ul class="entry__meta">
-                          {% for auth in  last_posts.0.auth.all %}
-                            <li><a href="{{ auth.get_absolute_url }}">
-                                            {{ auth }}
-                            </a></li>
-                        {% endfor %}
-                        <li>{{ last_posts.0.date_pub }}</li>
-                    </ul>
-                </div>
-            </div> <!-- end entry__content -->
+        <div class="post-entry-2 d-flex">
+          <div class="thumbnail" style="background-image: url('{{ last_posts.3.image.url }}')"></div>
+            <div class="contents">
+              <h2><a href="{{ last_posts.all.3.get_absolute_url }}">{{ last_posts.3.title }}</a></h2>
+              <div class="post-meta">
+                <span class="d-block">
+                  {% for auth in  last_posts.3.auth.all %}
+                    <a href="{{ auth.get_absolute_url }}">{{ auth }}</a> in
+                  {% endfor %}
+                  {% for tag in last_posts.3.tags.all %}
+                    <a href="{{ tag.get_absolute_url }}"> {{ tag }}</a>
+                  {% endfor %}
+                </span>
+                <span class="date-read">{{ last_posts.2.date_pub }}<span class="mx-1">&bullet
+                </span> 3 min read <span class="icon-star2"></span></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
 
-        </div> <!-- end entry -->
-    </div> <!-- end featured__big -->
-
-    <div class="featured__column featured__column--small">
-
-       <div class="entry" style="background-image:url('{{ last_posts.1.image.url }}');">
-
-            <div class="entry__content">
-
-                <span class="entry__category"><a href="{{ last_posts.all.1.get_absolute_url }}">
-                    {% for tag in last_posts.1.tags.all %}
-                    {{ tag }}
-                    {% endfor %}
-                </a></span>
-
-                <h1><a href="{{ last_posts.1.get_absolute_url }}" title="">
-                    {{ last_posts.1.title }}
-                </a></h1>
-
-                <div class="entry__info">
-                    <a href="" class="entry__profile-pic">
-                        <img class="avatar" src={{ last_posts.1.auth.all.0.image.url }} alt="">
-                    </a>
-
-                    <ul class="entry__meta">
-                         {% for auth in  last_posts.1.auth.all %}
-                            <li><a href="{{ auth.get_absolute_url }}">
-                                            {{ auth }}
-                            </a></li>
-                        {% endfor %}
-                        <li>{{ last_posts.1.date_pub }}</li>
-                    </ul>
-                </div>
-
-            </div> <!-- end entry__content -->
-
-        </div> <!-- end entry -->
-           <div class="entry" style="background-image:url('{{ last_posts.2.image.url }}');">
-
-                <div class="entry__content">
-                    <span class="entry__category"><a href="{{ last_posts.all.2.get_absolute_url }}">
-                         {% for tag in last_posts.2.tags.all %}
-                            {{ tag }}
-                         {% endfor %}
-
-                    </a></span>
-
-                    <h1><a href="{{ last_posts.all.2.get_absolute_url }}" title="">{{ last_posts.2.title }}</a></h1>
-
-                    <div class="entry__info">
-                        <a href="{{ last_posts.all.2.get_absolute_url }}" class="entry__profile-pic">
-                            <img class="avatar" src={{ last_posts.2.auth.all.0.image }} alt="">
-                        </a>
-
-                        <ul class="entry__meta">
-                          {% for auth in  last_posts.2.auth.all %}
-                            <li><a href="{{ auth.get_absolute_url }}">
-                                            {{ auth }}
-                            </a></li>
-                          {% endfor %}
-
-                            <li>{{ last_posts.2.date_pub }}</li>
-                        </ul>
-                    </div>
-                </div> <!-- end entry__content -->
-
-            </div> <!-- end entry -->
-
-        </div> <!-- end featured__small -->
-    </div> <!-- end featured -->
 

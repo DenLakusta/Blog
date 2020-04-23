@@ -60,7 +60,8 @@ class AddReview(View):
         post = Post.objects.get(id=pk)
         print(form.is_valid())
         if form.is_valid():
-            print(form.errors)
+            print(request.POST)
+            # print(form.errors)
             form = form.save(commit=False)
             if request.POST.get("parent", None):
                 form.parent_id = int(request.POST.get('parent'))

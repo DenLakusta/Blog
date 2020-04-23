@@ -1,38 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="s-pageheader">
-        {% include 'include/header.html' %}
-    </div> <!-- end s-pageheader -->
-   <!-- s-content
-    ================================================== -->
-    <section class="s-content s-content--narrow s-content--no-padding-bottom">
-       <article class="row format-standard">
-            <div class="s-content__header col-full">
-                <h1 class="s-content__header-title">
-                    {{ flatpage.title }}
-                    </h1>
-            </div> <!-- end s-content__header -->
-            <div class="col-full s-content__main">
-                <p class="lead">{{ flatpage.content }}</p>
-                <div class="s-content__author">
-                    <div class="s-content__author-about">
-                        <h4 class="s-content__author-name">
-                            <a href="#0">{{ auth.name }}</a>
-                        </h4>
-                        <ul class="s-content__author-social">
-                           <li><a href="#0">Facebook</a></li>
-                           <li><a href="#0">Twitter</a></li>
-                           <li><a href="#0">GooglePlus</a></li>
-                           <li><a href="#0">Instagram</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div> <!-- end s-content__main -->
-        </article>
-        <!-- comments
-        ================================================== -->
-    </section> <!-- s-content -->
+
+    {% include 'include/header.html' %}
+
+
 
 {% endblock content %}
 
