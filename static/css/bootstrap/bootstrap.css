@@ -1956,20 +1956,6 @@ textarea.form-control {
     .form-inline .custom-control-label {
       margin-bottom: 0; } }
 
-.my {
-    margin-bottom: 8px;
-}
-.iq {
-    margin-right: 8px;
-}
-.eh {
-    list-style-type: none;
-}
-.cg {
-    display: inline-block;
-}
-
-
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -1984,7 +1970,7 @@ textarea.form-control {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  /*border-radius: 0.25rem;*/
+  border-radius: 0.25rem;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

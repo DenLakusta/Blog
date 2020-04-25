@@ -3,7 +3,7 @@ from django.urls import path
 from django.contrib.flatpages import views
 from . import views
 from django.views.generic import TemplateView
-
+from allauth.account.views import LogoutView
 
 urlpatterns = [
     path('', views.PostsView.as_view(), name='home'),
@@ -17,5 +17,5 @@ urlpatterns = [
     path('json_filter/', views.JsonFilterPostsView.as_view(), name='json_filter'),
     path('about/', flatpage, name='about'),
     path('contact_us/', flatpage, name='contact_us'),
-    path('accounts/logout/', TemplateView.as_view(template_name='account/logout.html'))
+    path('accounts/login/', views.MyLoginView.as_view(), name='account_login')
 ]

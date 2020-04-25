@@ -10,7 +10,7 @@ from django.views.generic.base import View
 from .forms import ReviewForm
 from .models import Post, Tag, Author, Category
 from django.core.paginator import Paginator
-
+from allauth.account.views import LogoutView, LoginView
 
 # reverse('django.contrib.flatpages.views.flatpage', kwargs={'url': '/about/'})
 
@@ -135,3 +135,10 @@ class JsonFilterPostsView(TagYear, ListView):
 
 
 
+class MyLogoutView(LogoutView):
+    template_name = 'account/logout.html'
+
+
+
+class MyLoginView(LoginView):
+    template_name = 'hanabis_blog/post_list.html'

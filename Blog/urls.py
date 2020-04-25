@@ -18,10 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
-
+import django
+from allauth.account.views import LogoutView
 urlpatterns = [
     # path('', TemplateView.as_view(template_name="social_app/index.html")),
     path('admin/', admin.site.urls),
+    # path('accounts/logout/', LogoutView.as_view, {'next_page': '/'}),
     path('accounts/', include('allauth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('pages/', include('django.contrib.flatpages.urls')),

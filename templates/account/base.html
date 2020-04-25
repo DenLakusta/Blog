@@ -2,11 +2,14 @@
 
 {% block content %}
 
-    <div class="s-pageheader">
 
         {% include 'include/header.html' %}
-    </div> <!-- end s-pageheader -->
-    {% block auth %}
-    {% endblock auth %}
+  <div class="container">
+    <div class="row">
+       {% block auth %}
+       {% endblock auth %}
+    </div>
+  </div>
+
 {% endblock content %}
 
