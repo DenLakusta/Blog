@@ -8,7 +8,7 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.base import View
 
 from .forms import ReviewForm
-from .models import Post, Tag, Author
+from .models import Post, Tag, Author, Category
 from django.core.paginator import Paginator
 
 
@@ -78,6 +78,11 @@ class AuthorDetailView(DetailView):
 class TagDetailView(ListView):
     model = Tag
     slug_field = "slug"
+
+class CategoryDetailView(ListView):
+    model = Category
+    slug_field = "slug"
+
 
 
 

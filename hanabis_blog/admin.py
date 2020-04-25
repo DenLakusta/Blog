@@ -73,7 +73,7 @@ class PostAdmin(admin.ModelAdmin):
            "fields":("body", "image")
         }),
         (None, {
-           "fields":(("title", "slug"),)
+           "fields":(("title", "slug", "category"),)
         }),
         ("Options", {
             "classes":("collapse",),

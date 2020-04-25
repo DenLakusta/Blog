@@ -72,7 +72,7 @@ class Post(models.Model):
     auth = models.ManyToManyField(Author, verbose_name="Authors", related_name='posts', blank=True)
     image = models.ImageField("Post image", upload_to="post_image/")
     draft = models.BooleanField("Draft", default=False)
-    categories = models.ManyToManyField(Category, verbose_name="categories", related_name="posts", blank=True)
+    category = models.ForeignKey(Category, verbose_name="Categories", on_delete=models.SET_NULL, null=True, related_name='posts')
 
     def get_absolute_url(self):
         return reverse("post_detail", kwargs={"slug":self.slug})
