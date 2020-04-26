@@ -110,7 +110,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Blog.wsgi.application'
-ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/'
+# ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

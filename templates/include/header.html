@@ -3,6 +3,8 @@
 {% load account socialaccount %}
 {% load socialaccount %}
 {% get_providers as socialaccount_providers %}
+
+
 <div class="header-top">
  <div class="container">
    <div class="row align-items-center">
@@ -66,6 +68,21 @@
                    <button class="btn btn-primary btn-sm">Log out</button>
                 </form>
             </li>
+
+              <li class="nav-item dropdown">
+{#               <div class="dropdown open">#}
+                  <a href="{% url 'account_logout' %}"><img class="rounded-circle" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" width="25" height="25" alt="{{ user.socialaccount_set.all.0.extra_data.given_name }}"></a>
+{#                   <div class="dropdown-menu dropdown-menu">#}
+{#                    <a class="dropdown-item" href="#">Log out</a>#}
+{#                    <a class="dropdown-item" href="#">Another action</a>#}
+{#                    <a class="dropdown-item" href="#">Something else here</a>#}
+{#                   </div>#}
+{#               </div>#}
+              </li>
+                <li>
+                    <p>{{ user.socialaccount_set.all.0.extra_data.given_name }}</p>
+                </li>
+
             {% else %}
                 {% for provider in socialaccount_providers %}
                 <li>
@@ -74,6 +91,26 @@
                       <img src="/media/icons8-google2.svg" alt=""> Sign in</button></a>
                 </li>
                 {% endfor %}
+
+{#                <li>#}
+                    <!-- Add from here -->
+{#                    {% for ass in backends.associated %}#}
+{#                      {% if ass.provider == 'google' %}#}
+{#                        <div class="col-md-6 text-center">#}
+{#                            <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">#}
+{#                        </div>#}
+{#                        <div class="col-md-6 social-container my-2">                 <p> Signed in via:  {{ ass.provider }} </p>#}
+{#                            <p> Name:  {{ ass.extra_data.name }} </p>#}
+{#                            <p> Provider url: <a href="{{ass.extra_data.profile_url}}">link</a></p>#}
+{#                        </div>#}
+{#                      {% endif %}#}
+{#                    {% endfor %}#}
+{#                    <div class="col-sm-12 mt-2 text-center">#}
+{#                      <button class="btn btn-danger">#}
+{#                        <a href="{% url 'account_logout' %}">Logout</a>#}
+{#                      </button>#}
+{#                    </div>#}
+{#                </li>#}
             {% endif %}
            </ul>
          </nav>
