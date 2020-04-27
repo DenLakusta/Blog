@@ -1,18 +1,19 @@
+from allauth.socialaccount.models import SocialAccount
 from django import forms
 from .models import Reviews, Post
 from bootstrap_datepicker.widgets import DatePicker
 from snowpenguin.django.recaptcha3.fields import ReCaptchaField
-
+from django.contrib.auth.models import User
 
 
 class ReviewForm(forms.ModelForm):
+
+
     recaptcha = ReCaptchaField()
     class Meta:
         model = Reviews
-        fields = ('text',)
+        fields = ('text', 'email', 'name', 'recaptcha', 'username')
         widgets = {
-            # 'name':forms.TextInput(attrs={"class":"form-field full-width", "placeholder":"Your Name", "id":"cNmae", "name":"name", }),
-            # 'email':forms.EmailInput(attrs={"class":"form-field full-width","placeholder":"Your Email", "id":"cEmail", "name":"email"}),
-            'text':forms.Textarea(attrs={"class":"p-5 bg-light", "placeholder":"Your Message", "id":"cMessage", "name":"message"}),
 
+            'text':forms.Textarea(attrs={"class":"form-control", "placeholder":"Your Message", "id":"message", "name":"text", 'cols':"30", 'rows':"10"}),
         }

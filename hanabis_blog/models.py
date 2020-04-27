@@ -1,13 +1,12 @@
+import allauth
+from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth.models import User
 from django.db import models
 from datetime import datetime
 # Create your models here.
 from django.urls import reverse
 
-
-
-
-
+from Blog import settings
 
 
 class Category(models.Model):
@@ -92,13 +91,14 @@ class Post(models.Model):
 
 
 class Reviews(models.Model):
-
+    username = models.CharField('username', null=True, max_length=100)
     name = models.CharField('Name', max_length=100, null=True, default='Anonymous')
-    email = models.EmailField("Email", max_length=150, null=True, blank=True, default='anonymous@gmail.com')
+    email = models.EmailField("Email", max_length=150, null=True, blank=True)
     text = models.TextField('Message', max_length=5000)
     parent = models.ForeignKey('self', verbose_name='Parent', on_delete=models.SET_NULL, blank=True, null=True)
     date_pub = models.CharField("Date",null=True, blank=True, auto_created=True, default=datetime.now().strftime('%Y-%m-%d'), max_length=50)
     post = models.ForeignKey(Post, verbose_name='post', on_delete=models.CASCADE)
+    user = models.ManyToManyField(SocialAccount, verbose_name="User", related_name='reviews', blank=True)
 
     def __str__(self):
         return f"{self.name} - {self.post}"
@@ -106,5 +106,6 @@ class Reviews(models.Model):
     class Meta:
         verbose_name = 'Review'
         verbose_name_plural = 'Reviews'
+
 
 

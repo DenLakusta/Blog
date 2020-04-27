@@ -12,12 +12,12 @@
        <a href="{% url 'home' %}" class="site-logo">
          Hanabis.Tech
        </a>
-        <a href="#" class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">
+        <a href="" class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">
            <span class="icon-menu h3"></span>
         </a>
      <div class="ml-md-auto top-social d-none d-lg-inline-block">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
+        <input name="s" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-primary btn-sm" type="submit">Search</button>
       </form>
      </div>
@@ -71,7 +71,7 @@
 
               <li class="nav-item dropdown">
 {#               <div class="dropdown open">#}
-                  <a href="{% url 'account_logout' %}"><img class="rounded-circle" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" width="25" height="25" alt="{{ user.socialaccount_set.all.0.extra_data.given_name }}"></a>
+                  <a href="{% url 'account_logout' %}"><img class="rounded-circle" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" width="30" height="30" alt="{{ user.socialaccount_set.all.0.extra_data.given_name }}"></a>
 {#                   <div class="dropdown-menu dropdown-menu">#}
 {#                    <a class="dropdown-item" href="#">Log out</a>#}
 {#                    <a class="dropdown-item" href="#">Another action</a>#}

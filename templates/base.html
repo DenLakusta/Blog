@@ -32,6 +32,8 @@
   <link href="{% static 'css/jquery.mb.YTPlayer.min.css'%}" media="all" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    {% recaptcha_init %}
+    {% recaptcha_ready action_name='homepage' %}
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">

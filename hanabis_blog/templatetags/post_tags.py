@@ -1,3 +1,4 @@
+from allauth.socialaccount.models import SocialAccount
 from django import template
 from hanabis_blog.models import Tag, Post
 
@@ -20,5 +21,8 @@ def get_popular_posts(count=5):
     posts = Post.objects.order_by('id')[:count]
     # print(posts)
     return {"popular_posts":posts}
-
+#
+# @register.inclusion_tag('hanabis_blog/post_detail.html')
+# def get_social_users():
+#     user = SocialAccount.objects.
 
