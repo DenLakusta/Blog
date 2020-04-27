@@ -17,5 +17,6 @@ urlpatterns = [
     path('json_filter/', views.JsonFilterPostsView.as_view(), name='json_filter'),
     path('about/', flatpage, name='about'),
     path('contact_us/', flatpage, name='contact_us'),
-    path('accounts/login/', views.MyLoginView.as_view(), name='account_login')
+    path('accounts/login/', views.MyLoginView.as_view(), name='account_login'),
+    path('posts/', views.PostsView.as_view(template_engine='hanabis_blog/post_list.html'), name='posts')
 ]

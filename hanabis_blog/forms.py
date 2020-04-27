@@ -13,6 +13,7 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Reviews
         fields = ('text', 'email', 'name', 'recaptcha', 'username')
+
         widgets = {
 
             'text':forms.Textarea(attrs={"class":"form-control", "placeholder":"Your Message", "id":"message", "name":"text", 'cols':"30", 'rows':"10"}),

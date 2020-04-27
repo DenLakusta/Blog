@@ -16,18 +16,28 @@ from allauth.account.views import LogoutView, LoginView
 
 # reverse('django.contrib.flatpages.views.flatpage', kwargs={'url': '/about/'})
 
-class TagYear:
+
+class TagAdditional:
     def get_tags(self):
         return Tag.objects.all()
-    def get_year(self):
-        Post.objects.filter(draft=True)
 
 
-class PostsView(TagYear, ListView):
+class PostsView(TagAdditional, ListView):
     paginate_by = 4
     post_list = Post
+    template_name = 'hanabis_blog/post_list.html'
     queryset = Post.objects.filter(draft=False)
 
+    # def get(self, request, *args, **kwargs):
+    #     print(request.GET)
+
+
+# class AllPostsView(ListView):
+#     # paginate_by = 4
+#     all_posts = Post
+#     context_object_name = 'all_posts'
+#     template_name = 'hanabis_blog/all_posts.html'
+#
 
 class TagView(ListView):
     tag_list = Tag
@@ -37,40 +47,38 @@ class TagView(ListView):
     #     tags = Tag.objects.all()
     #     return render(requests, 'tags/tags_list.html', {'tags_list':tags})
 #
-
+#
 class PostDetailView(DetailView):
-    model = Post
+    # pass
+    post = Post
     queryset = Post.objects.filter(draft=False)
     slug_field = "slug"
-
+#
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["form"] = ReviewForm()
-        # context['extra_data'] = SocialAccount.extra_data
+        context['extra_data'] = SocialAccount.extra_data
         return context
 
 
 class AddReview(View):
     review = Reviews
 
-
     def post(self, request, pk):
         user = User.objects.get(username=request.POST.get('username'))
-        username = SocialAccount.objects.get(user=user)
+        picture = SocialAccount.objects.get(user=user).extra_data.get('picture')
+        # print(picture)
         form = ReviewForm(request.POST)
         post = Post.objects.get(id=pk)
-
         print(request.POST)
         print(form.is_valid())
         if form.is_valid():
-
             # print(form.errors)
             form = form.save(commit=False)
             if request.POST.get("parent", None):
                 form.parent_id = int(request.POST.get('parent'))
-
             form.post = post
-
+            form.picture = picture
             form.save()
         return redirect(post.get_absolute_url())
 
@@ -88,6 +96,10 @@ class CategoryDetailView(ListView):
     model = Category
     slug_field = "slug"
 
+# class CategoriesView(ListView):
+#     tag_list = Category
+#     queryset = Category.objects.all()
+
 
 class Search(ListView):
     paginate_by = 4
@@ -101,7 +113,7 @@ class Search(ListView):
 
 
 """ Filters. Need to make HTML templates"""
-class FilterPostsView(TagYear, ListView):
+class FilterPostsView(TagAdditional, ListView):
     def get_queryset(self):
         queryset = Post.objects.filter(
             Q(date_pub__in=self.request.GET.getlist("date")) |
@@ -113,7 +125,7 @@ class FilterPostsView(TagYear, ListView):
     #     context['date_pub'] = ''.join([f"date_pub={x}&" for x in self.request.GET.getlist()])
 
 """Ajax request. Not working for now. HTML forms should be prepared for it."""
-class JsonFilterPostsView(TagYear, ListView):
+class JsonFilterPostsView(TagAdditional, ListView):
     """Filter with ajax request"""
     def get_queryset(self):
         queryset = Post.objects.filter(

@@ -74,6 +74,7 @@ class Post(models.Model):
     draft = models.BooleanField("Draft", default=False)
     category = models.ForeignKey(Category, verbose_name="Categories", on_delete=models.SET_NULL, null=True, related_name='posts')
 
+
     def get_absolute_url(self):
         return reverse("post_detail", kwargs={"slug":self.slug})
     
@@ -89,7 +90,6 @@ class Post(models.Model):
         verbose_name_plural = "Posts"
 
 
-
 class Reviews(models.Model):
     username = models.CharField('username', null=True, max_length=100)
     name = models.CharField('Name', max_length=100, null=True, default='Anonymous')
@@ -98,14 +98,11 @@ class Reviews(models.Model):
     parent = models.ForeignKey('self', verbose_name='Parent', on_delete=models.SET_NULL, blank=True, null=True)
     date_pub = models.CharField("Date",null=True, blank=True, auto_created=True, default=datetime.now().strftime('%Y-%m-%d'), max_length=50)
     post = models.ForeignKey(Post, verbose_name='post', on_delete=models.CASCADE)
-    user = models.ManyToManyField(SocialAccount, verbose_name="User", related_name='reviews', blank=True)
-
+    picture = models.URLField(max_length = 200)
     def __str__(self):
         return f"{self.name} - {self.post}"
 
     class Meta:
         verbose_name = 'Review'
         verbose_name_plural = 'Reviews'
-
-
 

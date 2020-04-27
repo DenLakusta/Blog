@@ -42,7 +42,7 @@
                <a href="{% url 'home' %}" class="nav-link text-left">Home</a>
              </li>
              <li>
-               <a href="categories.html" class="nav-link text-left">Posts</a>
+               <a href="{% url 'posts' %}" class="nav-link text-left">Posts</a>
              </li>
              <li>
                <a href="categories.html" class="nav-link text-left">Categories</a>
@@ -52,7 +52,7 @@
              </li>
 
              <li>
-               <a href="categories.html" class="nav-link text-left">About</a>
+               <a href="{% url 'about' %}" class="nav-link text-left">About</a>
              </li>
             <li class="nav-item"><a href="#" class="nav-link"></a></li>
             <li class="nav-item"><a href="#" class="nav-link"></a></li>
@@ -68,7 +68,7 @@
                    <button class="btn btn-primary btn-sm">Log out</button>
                 </form>
             </li>
-
+            {% if user.socialaccount_set.all.0.extra_data %}
               <li class="nav-item dropdown">
 {#               <div class="dropdown open">#}
                   <a href="{% url 'account_logout' %}"><img class="rounded-circle" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" width="30" height="30" alt="{{ user.socialaccount_set.all.0.extra_data.given_name }}"></a>
@@ -79,6 +79,7 @@
 {#                   </div>#}
 {#               </div>#}
               </li>
+              {% endif %}
                 <li>
                     <p>{{ user.socialaccount_set.all.0.extra_data.given_name }}</p>
                 </li>

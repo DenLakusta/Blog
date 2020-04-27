@@ -51,7 +51,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(Reviews)
 class ReviewsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'email', 'parent', 'post', 'date_pub')
+    list_display = ('id', 'name', 'email', 'parent', 'post', 'date_pub', 'picture')
     readonly_fields = ('name', 'email')
     list_display_links = ["name"]
 
