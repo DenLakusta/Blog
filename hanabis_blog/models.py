@@ -106,3 +106,4 @@ class Reviews(models.Model):
         verbose_name = 'Review'
         verbose_name_plural = 'Reviews'
 
+#

@@ -22,7 +22,7 @@ class TagAdditional:
         return Tag.objects.all()
 
 
-class PostsView(TagAdditional, ListView):
+class PostsBaseView(TagAdditional, ListView):
     paginate_by = 4
     post_list = Post
     template_name = 'hanabis_blog/post_list.html'
@@ -32,12 +32,19 @@ class PostsView(TagAdditional, ListView):
     #     print(request.GET)
 
 
-# class AllPostsView(ListView):
-#     # paginate_by = 4
-#     all_posts = Post
-#     context_object_name = 'all_posts'
-#     template_name = 'hanabis_blog/all_posts.html'
-#
+
+class PostsView(TagAdditional, ListView):
+
+    post_list = Post
+    template_name = 'hanabis_blog/all_posts.html'
+    queryset = Post.objects.filter(draft=False)
+
+class CategoriesView(ListView):
+
+    categories_list = Category
+    template_name = 'hanabis_blog/categories.html'
+    queryset = Category.objects.all()
+
 
 class TagView(ListView):
     tag_list = Tag
@@ -46,8 +53,15 @@ class TagView(ListView):
     # def get(self, requests):
     #     tags = Tag.objects.all()
     #     return render(requests, 'tags/tags_list.html', {'tags_list':tags})
+
+#
+# class ProjectView(ListView):
+#     pass
 #
 #
+
+
+
 class PostDetailView(DetailView):
     # pass
     post = Post
@@ -88,11 +102,13 @@ class AuthorDetailView(DetailView):
     template_name = 'hanabis_blog/author_detail.html'
     slug_field = "slug"
 
-class TagDetailView(ListView):
+class TagDetailView(DetailView):
     model = Tag
     slug_field = "slug"
 
-class CategoryDetailView(ListView):
+
+
+class CategoryDetailView(DetailView):
     model = Category
     slug_field = "slug"
 
