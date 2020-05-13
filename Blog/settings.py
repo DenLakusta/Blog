@@ -27,7 +27,7 @@ SECRET_KEY = 'ow%ay+-krs-9t*cpiz1vix_m2b0n*7_itz0fy93k+tn$!gmuq8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '5f6a4389.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '7f3d5587.ngrok.io']
 
 
 # Application definition
@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     # 'social_app',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'hitcount',
+
     # 'users'
 
     # "allauth.socialaccount ",

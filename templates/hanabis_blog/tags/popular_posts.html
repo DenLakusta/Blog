@@ -1,5 +1,5 @@
 {% load post_tags %}
-
+{% load hitcount_tags %}
     <div class="section-title">
       <h2>Popular Posts</h2>
     </div>
@@ -19,6 +19,7 @@
                 </span>
                 <span class="date-read">{{ post.date_pub }}<span class="mx-1">&bullet
                 </span> 3 min read <span class="icon-star2"></span></span>
+                <span class="d-block">Post views: {% get_hit_count for post %}</span>
             </div>
           </div>
         </div>

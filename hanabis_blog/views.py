@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.base import View
+from hitcount.views import HitCountDetailView
 
 from .forms import ReviewForm
 from .models import Post, Tag, Author, Category,Reviews
@@ -62,9 +63,10 @@ class TagView(ListView):
 
 
 
-class PostDetailView(DetailView):
+class PostDetailView(HitCountDetailView):
     # pass
     post = Post
+    count_hit = True
     queryset = Post.objects.filter(draft=False)
     slug_field = "slug"
 #
@@ -119,6 +121,7 @@ class CategoryDetailView(DetailView):
 
 class Search(ListView):
     paginate_by = 4
+    template_name = 'hanabis_blog/all_posts.html'
     def get_queryset(self):
         return Post.objects.filter(title__icontains=self.request.GET.get('s'))
 

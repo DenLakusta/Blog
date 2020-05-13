@@ -1,4 +1,4 @@
-
+{% load hitcount_tags %}
 <div class="col-lg-8">
     <div class="row">
       <div class="col-12">
@@ -30,6 +30,7 @@
              </span>
              <span class="date-read">{{ last_posts.0.date_pub }}<span class="mx-1">&bullet;
              </span> 3 min read <span class="icon-star2"></span></span>
+           <span class="d-block">Post views: {% get_hit_count for last_posts.0 %}</span>
           </div>
         </div>
       </div>
@@ -57,6 +58,7 @@
 
                 <span class="date-read">{{ last3posts.date_pub }}<span class="mx-1">&bullet
                 </span> 3 min read <span class="icon-star2"></span></span>
+              <span class="d-block">Post views: {% get_hit_count for last3posts %}</span>
             </div>
           </div>
         </div>
