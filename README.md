@@ -1,4 +1,4 @@
----
+
 ### Using Postman newman test in Docker
 
 Current `Dockerfile` used base `node` Image and then installed two modules globally via `npm`. This file also creates a new `WORKDIR` and specifies an `ENTRYPOINT`.  
