@@ -39,7 +39,7 @@ There are some additional properties that are specific to collection run:
 * `build` - This is building from the root dir as this is where my `Dockerfile` is located
 * `image` - Same reason for using a `container_name`, this just gives the `image` a name
 * `command` - This is the important part, it's the command that tells `newman` where your files are located and what output you would like after the collection run
-  ** sdfs
+  * `sdfs`
 * `volumes` - This is equally import as it provides a link from the local `./src` dir to the `/etc/newman` dir in the container
 
 ---
