@@ -45,7 +45,7 @@ There are some additional properties that are specific to collection run:
 
 ---
 
-To run a newman with specific collection place `json` file exported from Postman to './src' directory. 
+## To run a newman with specific collection place `json` file exported from Postman to './src' directory. 
 
 ### Collection Environment
 `-e` - flag can be used to set environments for running test  
