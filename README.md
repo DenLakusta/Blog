@@ -25,7 +25,7 @@ services:
         run /tmp/newman/API_getway.json
         -e environments/Restful_Booker_Environment.json 
         -r html,cli 
-        --reporter-html-export reports/Restful_Booker_Test_Run.html 
+        --reporter-html-export reports/collection_environment.html 
         --reporter-html-template reports/templates/customTemplate.hbs
         --color on
       volumes:
