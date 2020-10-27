@@ -12,7 +12,6 @@ WORKDIR /etc/newman
 
 ENTRYPOINT ["newman"]
 ```
-
 `docker-compose.yml` file helps to make running the collection easier.
 ```yml
 version: "2"
@@ -21,14 +20,17 @@ services:
       container_name: restful_booker_checks
       build: .
       image: postman_checks
+      network_mode: "host"
       command:
-        run Restful_Booker_Collection.json
-        -e environments/Restful_Booker_Environment.json
-        -r html,cli
-        --reporter-html-export reports/Restful_Booker_Test_Run.html
+        run /tmp/newman/API_getway.json
+        -e environments/Restful_Booker_Environment.json 
+        -r html,cli 
+        --reporter-html-export reports/Restful_Booker_Test_Run.html 
         --reporter-html-template reports/templates/customTemplate.hbs
+        --color on
       volumes:
-        - ./src:/etc/newman
+        - ./src:/tmp/newman
+
 ```
 
 This file contains a few default properties `version` and `services`, these are required to make it a valid `docker-compose` file. Service name of runing docker is `postman_checks`.
