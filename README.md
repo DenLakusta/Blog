@@ -23,9 +23,9 @@ services:
       network_mode: "host"
       command:
         run /tmp/newman/API_getway.json
-        -e environments/Restful_Booker_Environment.json 
+        -e environments/collection_environment.json
         -r html,cli 
-        --reporter-html-export reports/collection_environment.html 
+        --reporter-html-export reports/APIGetwaiReport.html 
         --reporter-html-template reports/templates/customTemplate.hbs
         --color on
       volumes:
@@ -44,6 +44,8 @@ There are some additional properties that are specific to collection run:
 * `volumes` - This is equally import as it provides a link from the local `./src` dir to the `/etc/newman` dir in the container
 
 ---
+
+To run a newman with specific collection place `json` file exported from Postman to './src' directory. 
 
 ### Collection Environment
 `-e` - flag can be used to set environments for running test  
