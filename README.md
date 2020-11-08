@@ -12,7 +12,6 @@ sudo docker run --name controller --detach --rm --volume \`pwd\`:/jmeter rdpanek
  `--logfile` - the file to log samples to
  
  `-J --jmeterproperty` - <argument>=<value> Define additional JMeter properties:
-
 	`-Jhostname=172.18.0.1` - can be used in Jmeter `${__P(hostname,)}`
 	`-Jport=8080` - can be used in Jmeter test as `${__P(port,)}`
 	`Jdataset=input_data.csv` - can be used in Jmeter test as ${__P(dataset,)}
