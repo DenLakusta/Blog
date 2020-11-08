@@ -55,6 +55,28 @@ Also enciroment variables can be set in comand line or in docker-compose.yml fil
 To set variables just define it in run command as below:
 `--global-var --global-var baseUrl=http://127.0.0.1:8080/api/v1`
 
+Example:
+`docker-compose.yml` file with global variables
+```yml
+version: "2"
+services:
+  postman_checks:
+      container_name: restful_booker_checks
+      build: .
+      image: postman_checks
+      network_mode: "host"
+      command:
+        run /tmp/newman/Test_API_Service.postman_collection.json
+        --global-var baseUrl=http://127.0.0.1:8080/api/v1
+        --color on
+        -r html,cli 
+        --reporter-html-export reports/Restful_Booker_Test_Run.html 
+        --reporter-html-template reports/templates/customTemplate.hbs
+      volumes:
+        - ./src:/tmp/newman
+
+```
+
 ### Collection Run Output On The Command Line
 
 The default output of using `newman` locally or using the Docker Image, is on the CLI - This will give you a simple breakdown of what happened during the collection run.
