@@ -51,6 +51,7 @@ There are some additional properties that are specific to collection run:
 `-e` - flag can be used to set environments for running test  
 
 Also enciroment variables can be set in comand line or in docker-compose.yml file.
+
 To set variables just define it in run command as below:
 `--global-var --global-var baseUrl=http://127.0.0.1:8080/api/v1`
 
