@@ -50,7 +50,7 @@ There are some additional properties that are specific to collection run:
 ### Collection Environment
 `-e` - flag can be used to set environments for running test  
 
-Also environment variables can be set in comand line or in docker-compose.yml file.
+Also environment variables can be set in command line or in docker-compose.yml file.
 
 To set variables, just define it as a global as below:
 `--global-var baseUrl=http://127.0.0.1:8080/api/v1`
@@ -60,20 +60,20 @@ Example:
 ```yml
 version: "2"
 services:
-  postman_checks:
-      container_name: restful_booker_checks
-      build: .
-      image: postman_checks
-      network_mode: "host"
-      command:
-        run /tmp/newman/Test_API_Service.postman_collection.json
-        --global-var baseUrl=http://127.0.0.1:8080/api/v1
-        --color on
-        -r html,cli 
-        --reporter-html-export reports/Restful_Booker_Test_Run.html 
-        --reporter-html-template reports/templates/customTemplate.hbs
-      volumes:
-        - ./src:/tmp/newman
+postman_checks:
+container_name: restful_booker_checks
+build: .
+image: postman_checks
+network_mode: "host"
+command:
+run /tmp/newman/Test_API_Service.postman_collection.json
+--global-var baseUrl=http://127.0.0.1:8080/api/v1
+--color on
+-r html,cli
+--reporter-html-export reports/Restful_Booker_Test_Run.html
+--reporter-html-template reports/templates/customTemplate.hbs
+volumes:
+- ./src:/tmp/newman
 
 ```
 As a result we can use this variables in Postman collections.
