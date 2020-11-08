@@ -50,6 +50,10 @@ There are some additional properties that are specific to collection run:
 ### Collection Environment
 `-e` - flag can be used to set environments for running test  
 
+Also enciroment variables can be set in comand line or in docker-compose.yml file.
+To set variables just define it in run command as below:
+`--global-var --global-var baseUrl=http://127.0.0.1:8080/api/v1`
+
 ### Collection Run Output On The Command Line
 
 The default output of using `newman` locally or using the Docker Image, is on the CLI - This will give you a simple breakdown of what happened during the collection run.
